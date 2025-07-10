@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Small Trades Evolution - Elite Member Program</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            /* UNIFIED COLOR SYSTEM */
+            --primary-blue: #004990;  /* Lowe's Blue */
+            --primary-blue-dark: #003366;
+            --accent-orange: #ff6600;  /* Alert/Urgency */
+            --success-green: #10b981;
+            --warning-gold: #f59e0b;
+            --error-red: #ef4444;
+            
+            /* NEUTRAL SYSTEM */
+            --white: #ffffff;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --gray-900: #0f172a;
+            
+            /* TYPOGRAPHY */
+            --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            --font-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', monospace;
+            
+            /* SPACING */
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            
+            /* BORDERS */
+            --radius-sm: 0.375rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            
+            /* SHADOWS */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        body {
+            font-family: var(--font-sans);
+            background: var(--gray-50);
+            color: var(--gray-900);
+            line-height: 1.6;
+            padding: var(--space-4);
+        }
+        
+        /* CONTAINER SYSTEM */
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-xl);
+            overflow: hidden;
+            margin-bottom: var(--space-8);
+        }
+        
+        /* URGENT HEADER SYSTEM */
+        .urgent-header {
+            background: linear-gradient(135deg, var(--accent-orange) 0%, #ff4400 100%);
+            color: var(--white);
+            padding: var(--space-4) var(--space-6);
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        /* MAIN HEADER SYSTEM */
+        .header {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
+            color: var(--white);
+            padding: var(--space-8) var(--space-6);
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 1.75rem;
+            font-weight: 900;
+            margin-bottom: var(--space-2);
+            letter-spacing: -0.025em;
+        }
+        
+        .header .subtitle {
+            font-size: 1rem;
+            opacity: 0.95;
+            font-weight: 600;
+            margin-bottom: var(--space-4);
+        }
+        
+        .header .exclusive-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: var(--space-2) var(--space-4);
+            border-radius: var(--radius-lg);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        /* EMOTIONAL HOOK SECTION */
+        .emotional-hook {
+            background: var(--gray-900);
+            color: var(--white);
+            padding: var(--space-6);
+            text-align: center;
+        }
+        
+        .emotional-hook h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: var(--space-4);
+            color: var(--warning-gold);
+        }
+        
+        .emotional-hook p {
+            font-size: 1rem;
+            line-height: 1.7;
+            opacity: 0.9;
+        }
+        
+        /* PROOF POINTS */
+        .proof-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: var(--gray-200);
+            margin: var(--space-6) 0;
+        }
+        
+        .proof-item {
+            background: var(--white);
+            padding: var(--space-6) var(--space-4);
+            text-align: center;
+        }
+        
+        .proof-number {
+            font-size: 1.75rem;
+            font-weight: 900;
+            color: var(--success-green);
+            margin-bottom: var(--space-1);
+        }
+        
+        .proof-label {
+            font-size: 0.75rem;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+        
+        /* CARD SYSTEM */
+        .card {
+            background: var(--white);
+            padding: var(--space-6);
+            margin: var(--space-4);
+        }
+        
+        .card-header {
+            margin-bottom: var(--space-6);
+            text-align: center;
+        }
+        
+        .card-title {
+            font-size: 1.375rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: var(--space-2);
+        }
+        
+        .card-subtitle {
+            font-size: 1rem;
+            color: var(--gray-600);
+            font-weight: 500;
+        }
+        
+        /* FORM SYSTEM */
+        .form-group {
+            margin-bottom: var(--space-6);
+        }
+        
+        .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--gray-700);
+            margin-bottom: var(--space-2);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: var(--space-4) var(--space-4);
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            font-weight: 500;
+            background: var(--white);
+            transition: all 0.2s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(0, 73, 144, 0.1);
+        }
+        
+        .form-input[type="number"] {
+            font-family: var(--font-mono);
+            font-size: 1.125rem;
+            text-align: center;
+        }
+        
+        /* BUTTON SYSTEM */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-4) var(--space-6);
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            min-height: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.025em;
+        }
+        
+        .btn-primary {
+            background: var(--primary-blue);
+            color: var(--white);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-blue-dark);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+        
+        .btn-urgent {
+            background: linear-gradient(135deg, var(--accent-orange) 0%, #ff4400 100%);
+            color: var(--white);
+            box-shadow: var(--shadow-md);
+            animation: urgentPulse 2s infinite;
+        }
+        
+        @keyframes urgentPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        
+        .btn-success {
+            background: var(--success-green);
+            color: var(--white);
+        }
+        
+        .btn-full {
+            width: 100%;
+            margin-bottom: var(--space-3);
+        }
+        
+        /* SAVINGS CALCULATOR DISPLAY */
+        .savings-display {
+            background: linear-gradient(135deg, var(--success-green) 0%, #059669 100%);
+            color: var(--white);
+            padding: var(--space-8) var(--space-6);
+            text-align: center;
+            margin: var(--space-4);
+            border-radius: var(--radius-lg);
+        }
+        
+        .savings-label {
+            font-size: 0.875rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-2);
+            font-weight: 600;
+        }
+        
+        .savings-amount {
+            font-size: 3rem;
+            font-weight: 900;
+            font-family: var(--font-mono);
+            margin-bottom: var(--space-2);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .savings-subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 600;
+        }
+        
+        /* TIER PROGRESS SYSTEM */
+        .tier-progress {
+            background: var(--white);
+            padding: var(--space-6);
+            margin: var(--space-4);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            border: 2px solid var(--gray-200);
+        }
+        
+        .tier-header {
+            text-align: center;
+            margin-bottom: var(--space-6);
+        }
+        
+        .current-tier {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--primary-blue);
+            margin-bottom: var(--space-2);
+        }
+        
+        .tier-subtitle {
+            color: var(--gray-600);
+            font-size: 0.875rem;
+        }
+        
+        .tier-levels {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-2);
+            margin-bottom: var(--space-4);
+        }
+        
+        .tier-level {
+            text-align: center;
+            padding: var(--space-3);
+            border-radius: var(--radius-md);
+            background: var(--gray-100);
+            transition: all 0.2s;
+        }
+        
+        .tier-level.active {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+        
+        .tier-level.completed {
+            background: var(--success-green);
+            color: var(--white);
+        }
+        
+        .tier-number {
+            font-weight: 700;
+            font-size: 0.875rem;
+        }
+        
+        .progress-bar-container {
+            background: var(--gray-200);
+            height: 8px;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            margin-bottom: var(--space-2);
+        }
+        
+        .progress-bar {
+            background: linear-gradient(90deg, var(--primary-blue) 0%, var(--success-green) 100%);
+            height: 100%;
+            border-radius: var(--radius-sm);
+            transition: width 0.5s ease;
+        }
+        
+        .progress-text {
+            font-size: 0.75rem;
+            color: var(--gray-600);
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        /* COUNTDOWN TIMER */
+        .countdown-timer {
+            background: var(--gray-900);
+            color: var(--white);
+            padding: var(--space-6);
+            text-align: center;
+            margin: var(--space-4);
+            border-radius: var(--radius-lg);
+        }
+        
+        .countdown-label {
+            font-size: 0.875rem;
+            opacity: 0.8;
+            margin-bottom: var(--space-4);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .countdown-display {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-4);
+            margin-bottom: var(--space-4);
+        }
+        
+        .countdown-item {
+            text-align: center;
+        }
+        
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--accent-orange);
+            display: block;
+        }
+        
+        .countdown-unit {
+            font-size: 0.75rem;
+            opacity: 0.7;
+            text-transform: uppercase;
+        }
+        
+        /* ALERT SYSTEM */
+        .alert {
+            padding: var(--space-4);
+            border-radius: var(--radius-md);
+            margin: var(--space-4);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .alert-exclusive {
+            background: linear-gradient(135deg, #fef3c7, #fbbf24);
+            color: #92400e;
+            border: 2px solid #f59e0b;
+        }
+        
+        .alert-success {
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #d1fae5;
+        }
+        
+        .alert-warning {
+            background: #fffbeb;
+            color: #92400e;
+            border: 1px solid #fed7aa;
+        }
+        
+        /* SOCIAL PROOF */
+        .social-proof {
+            background: var(--gray-100);
+            padding: var(--space-6);
+            text-align: center;
+        }
+        
+        .social-proof-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--primary-blue);
+            margin-bottom: var(--space-2);
+        }
+        
+        .social-proof-text {
+            color: var(--gray-700);
+            font-weight: 600;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 480px) {
+            body {
+                padding: var(--space-2);
+            }
+            
+            .savings-amount {
+                font-size: 2.5rem;
+            }
+            
+            .proof-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tier-levels {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .countdown-display {
+                gap: var(--space-2);
+            }
+            
+            .countdown-number {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- SAVINGS CALCULATOR -->
+    <div class="container">
+        <div class="urgent-header">
+            ⏰ Next Referral Engine Run Starts January 2nd - 6 Months Only
+        </div>
+        
+        <div class="header">
+            <h1>SAVE $8,400+ PER YEAR</h1>
+            <p class="subtitle">On Materials You're Already Buying</p>
+            <div class="exclusive-badge">2,120 Elite Small Trades Only</div>
+        </div>
+        
+        <div class="emotional-hook">
+            <h2>Tired of Being Treated Like Just Another Account Number?</h2>
+            <p>This program treats you like the business partner you are. While your competitors pay full price, you get exclusive vendor pricing and first access to new products.</p>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Calculate Your Annual Savings</h2>
+                <p class="card-subtitle">See how much you'll save with exclusive Small Trades pricing</p>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Monthly Material Spend</label>
+                <input type="number" class="form-input" placeholder="5000" value="5000" id="monthlySpend">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Average Discount Expected</label>
+                <input type="number" class="form-input" placeholder="15" value="15" id="discountPercent">
+            </div>
+            
+            <button class="btn btn-urgent btn-full" onclick="calculateSavings()">Calculate My Savings</button>
+        </div>
+        
+        <div class="savings-display">
+            <div class="savings-label">Your Annual Savings</div>
+            <div class="savings-amount" id="annualSavings">$9,000</div>
+            <div class="savings-subtitle">Money back in your pocket</div>
+        </div>
+        
+        <div class="proof-grid">
+            <div class="proof-item">
+                <div class="proof-number">32%</div>
+                <div class="proof-label">Spend Increase</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-number">2,120</div>
+                <div class="proof-label">Elite Members</div>
+            </div>
+        </div>
+        
+        <div class="social-proof">
+            <div class="social-proof-number">$352,980</div>
+            <div class="social-proof-text">in new spend when all members register</div>
+        </div>
+    </div>
+    
+    <!-- REFERRAL TRACKER -->
+    <div class="container">
+        <div class="urgent-header">
+            🔥 Current Referral Engine Run: January - June 2025
+        </div>
+        
+        <div class="header">
+            <h1>REFERRAL PROGRESS</h1>
+            <p class="subtitle">Track Your Path to Elite Status</p>
+            <div class="exclusive-badge">Minimum 1 Referral Required</div>
+        </div>
+        
+        <div class="tier-progress">
+            <div class="tier-header">
+                <div class="current-tier">TIER 2 - BRONZE</div>
+                <div class="tier-subtitle">3 referrals this run • Next tier at 6 referrals</div>
+            </div>
+            
+            <div class="tier-levels">
+                <div class="tier-level completed">
+                    <div class="tier-number">TIER 1</div>
+                </div>
+                <div class="tier-level active">
+                    <div class="tier-number">TIER 2</div>
+                </div>
+                <div class="tier-level">
+                    <div class="tier-number">TIER 3</div>
+                </div>
+                <div class="tier-level">
+                    <div class="tier-number">TIER 4</div>
+                </div>
+            </div>
+            
+            <div class="progress-bar-container">
+                <div class="progress-bar" style="width: 50%"></div>
+            </div>
+            <div class="progress-text">3 of 6 referrals to next tier</div>
+        </div>
+        
+        <div class="countdown-timer">
+            <div class="countdown-label">Time Remaining in Current Run</div>
+            <div class="countdown-display">
+                <div class="countdown-item">
+                    <span class="countdown-number">127</span>
+                    <span class="countdown-unit">Days</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number">14</span>
+                    <span class="countdown-unit">Hours</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number">32</span>
+                    <span class="countdown-unit">Minutes</span>
+                </div>
+            </div>
+            <p style="opacity: 0.8; font-size: 0.875rem;">Next run starts July 1st, 2025</p>
+        </div>
+        
+        <div class="card">
+            <div class="form-group">
+                <label class="form-label">Add New Referral</label>
+                <input type="text" class="form-input" placeholder="Referral Name">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Contact Information</label>
+                <input type="text" class="form-input" placeholder="Phone or Email">
+            </div>
+            
+            <button class="btn btn-success btn-full">Submit Referral</button>
+        </div>
+        
+        <div class="alert alert-exclusive">
+            🎁 TIER 2 REWARD UNLOCKED: 15% off next Vendor purchase + exclusive quarterly giveaway entry
+        </div>
+    </div>
+    
+    <!-- REGISTRATION -->
+    <div class="container">
+        <div class="urgent-header">
+            ⚡ Limited Time: Welcome Packet Worth $150+ for New Members
+        </div>
+        
+        <div class="header">
+            <h1>JOIN ELITE SMALL TRADES</h1>
+            <p class="subtitle">Finally, a program that respects your business</p>
+            <div class="exclusive-badge">Invitation Only Program</div>
+        </div>
+        
+        <div class="emotional-hook">
+            <h2>Lowe's and Top Vendors Want YOU as Their Partner</h2>
+            <p>You're not just another customer - you're a vital part of our success. Get the respect, pricing, and support you deserve.</p>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Claim Your Spot</h2>
+                <p class="card-subtitle">2 minutes to register • No upfront costs • Cancel anytime</p>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Business Name</label>
+                <input type="text" class="form-input" placeholder="Your Business Name">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Primary Contact</label>
+                <input type="text" class="form-input" placeholder="Your Name">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Phone Number</label>
+                <input type="tel" class="form-input" placeholder="(555) 123-4567">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <input type="email" class="form-input" placeholder="your@business.com">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Payment Card (32% Spend Increase)</label>
+                <input type="text" class="form-input" placeholder="Card ending in ****">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Small Trades Evolution Code</label>
+                <input type="text" class="form-input" placeholder="STE-2025" value="STE-2025">
+            </div>
+            
+            <button class="btn btn-urgent btn-full">CLAIM MY ELITE STATUS</button>
+        </div>
+        
+        <div class="alert alert-success">
+            ✅ Welcome packet ships within 24 hours of approval
+        </div>
+        
+        <div class="proof-grid">
+            <div class="proof-item">
+                <div class="proof-number">10-20%</div>
+                <div class="proof-label">Vendor Discounts</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-number">6x</div>
+                <div class="proof-label">Per Year Contact</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-number">4</div>
+                <div class="proof-label">Reward Tiers</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-number">0</div>
+                <div class="proof-label">Hidden Fees</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calculateSavings() {
+            const monthlySpend = parseFloat(document.getElementById('monthlySpend').value) || 5000;
+            const discountPercent = parseFloat(document.getElementById('discountPercent').value) || 15;
+            
+            const annualSpend = monthlySpend * 12;
+            const annualSavings = annualSpend * (discountPercent / 100);
+            
+            document.getElementById('annualSavings').textContent = 
+                '$' + annualSavings.toLocaleString();
+        }
+        
+        // Auto-calculate on page load
+        calculateSavings();
+        
+        // Update countdown timer
+        function updateCountdown() {
+            // This would connect to your real countdown logic
+            const days = Math.floor(Math.random() * 30) + 100;
+            const hours = Math.floor(Math.random() * 24);
+            const minutes = Math.floor(Math.random() * 60);
+            
+            // Update display (simplified for demo)
+        }
+        
+        // Update every minute
+        setInterval(updateCountdown, 60000);
+    </script>
+</body>
+</html>
