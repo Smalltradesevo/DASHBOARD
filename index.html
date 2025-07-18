@@ -152,6 +152,62 @@
             background-color: #6b7280;
             transform: translateY(-1px);
         }
+
+        /* Sphere Tool Specific Styles */
+        .sphere-contact-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .sphere-contact-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-status-hot {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+        }
+        
+        .contact-status-warm {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+        
+        .contact-status-cold {
+            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+        }
+        
+        .contact-category-family {
+            border-left: 4px solid #ec4899;
+        }
+        
+        .contact-category-business {
+            border-left: 4px solid #3b82f6;
+        }
+        
+        .contact-category-social {
+            border-left: 4px solid #10b981;
+        }
+        
+        .contact-category-professional {
+            border-left: 4px solid #8b5cf6;
+        }
+        
+        .sphere-stats-card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 1px solid #0ea5e9;
+        }
+        
+        .sphere-visual {
+            background: radial-gradient(circle at center, #dbeafe 0%, #bfdbfe 40%, #93c5fd  100%);
+        }
+        
+        .contact-dot {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .contact-dot:hover {
+            transform: scale(1.2);
+            z-index: 10;
+        }
     </style>
 </head>
 <body class="gradient-bg min-h-screen">
@@ -669,6 +725,263 @@
                 </div>
             </div>
         </section>
+
+        <!-- 🌐 Sphere of Influence Builder -->
+        <section aria-labelledby="sphere-tool-heading" class="bg-white rounded-xl shadow-lg border border-slate-200">
+            <div class="p-6 border-b border-gray-200">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                    <h2 id="sphere-tool-heading" class="text-xl font-bold text-gray-900 flex items-center">
+                        <span class="text-2xl mr-3">🌐</span>
+                        Sphere of Influence Builder
+                    </h2>
+                    <div class="flex gap-2">
+                        <button 
+                            onclick="openSphereApp()" 
+                            class="btn-primary flex items-center px-4 py-2 text-white rounded-lg focus-ring text-sm"
+                            aria-label="Open full sphere tool"
+                        >
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                            Open Sphere Tool
+                        </button>
+                        <button 
+                            onclick="showAddContact()" 
+                            class="btn-secondary flex items-center px-4 py-2 bg-gray-200 text-gray-700 rounded-lg focus-ring text-sm"
+                            aria-label="Add new contact"
+                        >
+                            <span class="mr-2">👤</span>
+                            Add New Contact
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-6">
+                <!-- Sphere Statistics Dashboard -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-6">
+                    <div class="sphere-stats-card p-4 rounded-lg">
+                        <div class="text-center">
+                            <p class="text-sm font-medium text-blue-800">Total Contacts</p>
+                            <p class="text-3xl font-bold text-blue-900 mt-2" id="totalContacts">47</p>
+                            <p class="text-xs text-gray-600 mt-1">Active sphere</p>
+                        </div>
+                    </div>
+                    
+                    <div class="sphere-stats-card p-4 rounded-lg">
+                        <div class="text-center">
+                            <p class="text-sm font-medium text-yellow-800">Gold Tier</p>
+                            <p class="text-3xl font-bold text-yellow-600 mt-2" id="goldTier">12</p>
+                            <p class="text-xs text-gray-600 mt-1">VIP contacts</p>
+                        </div>
+                    </div>
+                    
+                    <div class="sphere-stats-card p-4 rounded-lg">
+                        <div class="text-center">
+                            <p class="text-sm font-medium text-gray-800">Titanium Tier</p>
+                            <p class="text-3xl font-bold text-gray-600 mt-2" id="titaniumTier">8</p>
+                            <p class="text-xs text-gray-600 mt-1">Elite contacts</p>
+                        </div>
+                    </div>
+                    
+                    <div class="sphere-stats-card p-4 rounded-lg">
+                        <div class="text-center">
+                            <p class="text-sm font-medium text-green-800">Connectors</p>
+                            <p class="text-3xl font-bold text-green-600 mt-2" id="connectors">15</p>
+                            <p class="text-xs text-gray-600 mt-1">Network builders</p>
+                        </div>
+                    </div>
+                    
+                    <div class="sphere-stats-card p-4 rounded-lg">
+                        <div class="text-center">
+                            <p class="text-sm font-medium text-purple-800">Mavens</p>
+                            <p class="text-3xl font-bold text-purple-600 mt-2" id="mavens">12</p>
+                            <p class="text-xs text-gray-600 mt-1">Influencers</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions & Preview -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Quick Add Contact Form -->
+                    <div id="addContactForm" class="p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-200 hidden slide-down">
+                        <h3 class="text-lg font-semibold text-blue-900 mb-4 flex items-center">
+                            <span class="mr-2">👤</span>
+                            Add New Contact
+                        </h3>
+                        
+                        <div class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="contactName" class="block text-sm font-medium text-gray-700 mb-1">Name *</label>
+                                    <input 
+                                        type="text" 
+                                        id="contactName" 
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                        placeholder="Enter full name"
+                                        required
+                                    >
+                                </div>
+                                <div>
+                                    <label for="contactPhone" class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                                    <input 
+                                        type="tel" 
+                                        id="contactPhone" 
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                        placeholder="(555) 123-4567"
+                                    >
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label for="contactEmail" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                <input 
+                                    type="email" 
+                                    id="contactEmail" 
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    placeholder="email@example.com"
+                                >
+                            </div>
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="contactTier" class="block text-sm font-medium text-gray-700 mb-1">Tier</label>
+                                    <select 
+                                        id="contactTier" 
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    >
+                                        <option value="">Select tier</option>
+                                        <option value="gold">🥇 Gold Tier</option>
+                                        <option value="titanium">🏆 Titanium Tier</option>
+                                        <option value="regular">⚪ Regular</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="contactType" class="block text-sm font-medium text-gray-700 mb-1">Type</label>
+                                    <select 
+                                        id="contactType" 
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    >
+                                        <option value="">Select type</option>
+                                        <option value="connector">🔗 Connector</option>
+                                        <option value="maven">📚 Maven</option>
+                                        <option value="regular">👤 Regular</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label for="contactNotes" class="block text-sm font-medium text-gray-700 mb-1">Notes</label>
+                                <textarea 
+                                    id="contactNotes" 
+                                    rows="2" 
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    placeholder="Add any notes about this contact..."
+                                ></textarea>
+                            </div>
+                            
+                            <div class="flex gap-3 pt-2">
+                                <button 
+                                    onclick="addContact()" 
+                                    class="btn-primary px-4 py-2 text-white rounded-lg focus-ring flex-1"
+                                >
+                                    Add Contact
+                                </button>
+                                <button 
+                                    onclick="hideAddContact()" 
+                                    class="btn-secondary px-4 py-2 bg-gray-300 text-gray-700 rounded-lg focus-ring"
+                                >
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity & Quick Access -->
+                    <div class="space-y-4">
+                        <!-- Embedded Sphere Tool Preview -->
+                        <div class="p-6 bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg border border-purple-200">
+                            <h3 class="text-lg font-semibold text-purple-900 mb-4 flex items-center">
+                                <span class="mr-2">📋</span>
+                                Your Sphere Overview
+                            </h3>
+                            
+                            <div class="text-center py-8">
+                                <div class="mb-4">
+                                    <iframe 
+                                        src="https://nowtool.netlify.app/" 
+                                        width="100%" 
+                                        height="400" 
+                                        frameborder="0" 
+                                        class="rounded-lg shadow-inner"
+                                        title="Sphere of Influence Tool"
+                                    ></iframe>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-4">
+                                    Full sphere management tool embedded above
+                                </p>
+                                <button 
+                                    onclick="openSphereApp()" 
+                                    class="btn-primary px-6 py-2 text-white rounded-lg focus-ring"
+                                >
+                                    Open in New Tab
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Quick Stats -->
+                        <div class="p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg border border-green-200">
+                            <h4 class="font-semibold text-green-900 mb-2">📈 This Week's Progress</h4>
+                            <div class="grid grid-cols-2 gap-4 text-sm">
+                                <div>
+                                    <span class="text-gray-600">New Contacts:</span>
+                                    <span class="font-bold text-green-600 ml-2">3</span>
+                                </div>
+                                <div>
+                                    <span class="text-gray-600">Follow-ups:</span>
+                                    <span class="font-bold text-orange-600 ml-2">8</span>
+                                </div>
+                                <div>
+                                    <span class="text-gray-600">Referrals:</span>
+                                    <span class="font-bold text-blue-600 ml-2">2</span>
+                                </div>
+                                <div>
+                                    <span class="text-gray-600">Meetings:</span>
+                                    <span class="font-bold text-purple-600 ml-2">5</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="mt-6 flex flex-wrap gap-3 justify-center">
+                    <button 
+                        onclick="openSphereApp()" 
+                        class="btn-primary flex items-center px-6 py-3 text-white rounded-lg focus-ring"
+                    >
+                        <span class="mr-2">🚀</span>
+                        Launch Full Sphere Tool
+                    </button>
+                    
+                    <button 
+                        onclick="exportContacts()" 
+                        class="btn-secondary flex items-center px-4 py-3 bg-gray-200 text-gray-700 rounded-lg focus-ring"
+                    >
+                        <span class="mr-2">📊</span>
+                        Export Data
+                    </button>
+                    
+                    <button 
+                        onclick="viewAnalytics()" 
+                        class="btn-secondary flex items-center px-4 py-3 bg-gray-200 text-gray-700 rounded-lg focus-ring"
+                    >
+                        <span class="mr-2">📈</span>
+                        View Analytics
+                    </button>
+                </div>
+            </div>
+        </section>
     </div>
 
     <script>
@@ -737,6 +1050,110 @@
             // showSuccessMessage('Event added successfully!');
         }
 
+        // SPHERE TOOL FUNCTIONS
+
+        /**
+         * Show the add contact form
+         */
+        function showAddContact() {
+            const form = document.getElementById('addContactForm');
+            if (form) {
+                form.classList.remove('hidden');
+                form.classList.add('slide-down');
+                // Focus the first input
+                const nameInput = document.getElementById('contactName');
+                if (nameInput) {
+                    setTimeout(() => nameInput.focus(), 100);
+                }
+            }
+        }
+
+        /**
+         * Hide the add contact form and clear inputs
+         */
+        function hideAddContact() {
+            const form = document.getElementById('addContactForm');
+            if (form) {
+                form.classList.add('hidden');
+                form.classList.remove('slide-down');
+                
+                // Clear all form inputs
+                document.getElementById('contactName').value = '';
+                document.getElementById('contactPhone').value = '';
+                document.getElementById('contactEmail').value = '';
+                document.getElementById('contactTier').value = '';
+                document.getElementById('contactType').value = '';
+                document.getElementById('contactNotes').value = '';
+            }
+        }
+
+        /**
+         * Add a new contact (placeholder for backend integration)
+         */
+        function addContact() {
+            const name = document.getElementById('contactName').value.trim();
+            
+            if (!name) {
+                alert('Please enter a name for the contact.');
+                document.getElementById('contactName').focus();
+                return;
+            }
+            
+            const contactData = {
+                name: name,
+                phone: document.getElementById('contactPhone').value.trim(),
+                email: document.getElementById('contactEmail').value.trim(),
+                tier: document.getElementById('contactTier').value,
+                type: document.getElementById('contactType').value,
+                notes: document.getElementById('contactNotes').value.trim()
+            };
+            
+            // Here you would send to your backend API
+            console.log('Adding contact:', contactData);
+            
+            // Update the stats (placeholder - would come from backend)
+            updateSphereStats();
+            
+            // Hide form and show success
+            hideAddContact();
+            alert('Contact added successfully!');
+        }
+
+        /**
+         * Open the full sphere tool in a new tab
+         */
+        function openSphereApp() {
+            window.open('https://nowtool.netlify.app/', '_blank');
+        }
+
+        /**
+         * Export contacts data
+         */
+        function exportContacts() {
+            // Placeholder for export functionality
+            alert('Export feature coming soon! This will download your contacts as CSV.');
+        }
+
+        /**
+         * View detailed analytics
+         */
+        function viewAnalytics() {
+            // Placeholder for analytics view
+            alert('Analytics dashboard coming soon! This will show detailed sphere insights.');
+        }
+
+        /**
+         * Update sphere statistics (placeholder)
+         */
+        function updateSphereStats() {
+            // This would normally fetch from your backend
+            const totalEl = document.getElementById('totalContacts');
+            if (totalEl) {
+                const current = parseInt(totalEl.textContent);
+                totalEl.textContent = current + 1;
+            }
+        }
+
         /**
          * Handle keyboard events for better UX
          */
@@ -760,17 +1177,31 @@
                     }
                 });
             }
+
+            // Add keyboard support for contact form
+            const contactName = document.getElementById('contactName');
+            if (contactName) {
+                contactName.addEventListener('keydown', function(event) {
+                    if (event.key === 'Escape') {
+                        hideAddContact();
+                    }
+                });
+            }
         });
 
         /**
          * Optional: Add keyboard navigation for accessibility
          */
         document.addEventListener('keydown', function(event) {
-            // Close add event form on Escape key (global)
+            // Close forms on Escape key (global)
             if (event.key === 'Escape') {
-                const form = document.getElementById('addEventForm');
-                if (form && !form.classList.contains('hidden')) {
+                const eventForm = document.getElementById('addEventForm');
+                const contactForm = document.getElementById('addContactForm');
+                
+                if (eventForm && !eventForm.classList.contains('hidden')) {
                     hideAddEvent();
+                } else if (contactForm && !contactForm.classList.contains('hidden')) {
+                    hideAddContact();
                 }
             }
         });
