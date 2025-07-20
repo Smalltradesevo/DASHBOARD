@@ -6,17 +6,12 @@
     <title>Agent Performance Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Custom CSS for perfect styling */
         .gradient-bg {
             background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
         }
         
         .tier-elite {
             background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
-        }
-        
-        .tier-diamond {
-            background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
         }
         
         .progress-bar {
@@ -28,12 +23,18 @@
         }
         
         .hover-lift:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
         
-        .week-card {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        .small-tile {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+        
+        .small-tile:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
         
         .week-card.completed {
@@ -47,18 +48,9 @@
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
         
-        .week-card.missed {
-            background-color: #fef2f2;
-            border-color: #fecaca;
-        }
-        
         .week-card.upcoming {
             background-color: #f9fafb;
             border-color: #e5e7eb;
-        }
-        
-        .event-card {
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .event-card:hover {
@@ -66,13 +58,9 @@
             transform: translateX(4px);
         }
         
-        .tool-card {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
         .tool-card:hover {
             border-color: #3b82f6;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
         
         .tool-card:hover .tool-icon {
@@ -88,51 +76,6 @@
             transform: translateX(4px);
         }
         
-        .tool-icon {
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .tool-text {
-            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .tool-arrow {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .award-card {
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .award-card:hover {
-            transform: translateY(-2px);
-        }
-        
-        .fade-in {
-            animation: fadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .slide-down {
-            animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        /* Focus styles for accessibility */
-        .focus-ring:focus {
-            outline: 2px solid #3b82f6;
-            outline-offset: 2px;
-        }
-        
-        /* Custom button styles */
         .btn-primary {
             background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -141,22 +84,11 @@
         .btn-primary:hover {
             background: linear-gradient(135deg, #1d4ed8 0%, #1e3a8a 100%);
             transform: translateY(-1px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-        
-        .btn-secondary {
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .btn-secondary:hover {
             background-color: #6b7280;
             transform: translateY(-1px);
-        }
-
-        /* Sphere Tool Specific Styles */
-        .sphere-stats-card {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            border: 1px solid #0ea5e9;
         }
     </style>
 </head>
@@ -164,7 +96,7 @@
     <div class="max-w-7xl mx-auto p-4 sm:p-6 space-y-6">
         
         <!-- Header Section -->
-        <header class="bg-white rounded-2xl shadow-lg p-6 border border-slate-200" role="banner">
+        <header class="bg-white rounded-2xl shadow-lg p-6 border border-slate-200">
             <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
                 <div>
                     <h1 class="text-2xl sm:text-3xl font-bold text-gray-900">Welcome back, Sarah Johnson!</h1>
@@ -172,35 +104,126 @@
                 </div>
                 <div class="flex flex-col items-start lg:items-end">
                     <div class="tier-elite inline-flex items-center px-4 py-2 rounded-full text-white font-semibold">
-                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.146a4.001 4.001 0 000 7.708V16a1 1 0 102 0v-3.146a4.001 4.001 0 000-7.708V4zM15.5 6a1 1 0 01.5.886v2.228a2 2 0 010 3.772v2.228a1 1 0 11-2 0v-2.228a2 2 0 010-3.772V6.886A1 1 0 0115.5 6z" clip-rule="evenodd" />
                         </svg>
                         Elite Pro
                     </div>
-                    <div class="mt-2 text-sm text-gray-600">
-                        Progress to Diamond Elite: 75%
-                    </div>
+                    <div class="mt-2 text-sm text-gray-600">Progress to Diamond Elite: 75%</div>
                     <div class="w-32 bg-gray-200 rounded-full h-2 mt-1 overflow-hidden">
-                        <div 
-                            class="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full progress-bar" 
-                            style="width: 75%"
-                            role="progressbar"
-                            aria-valuenow="75"
-                            aria-valuemin="0"
-                            aria-valuemax="100"
-                            aria-label="Progress to Diamond Elite"
-                        ></div>
+                        <div class="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full progress-bar" style="width: 75%"></div>
                     </div>
                 </div>
             </div>
         </header>
 
+        <!-- Quick Action Tiles - Small Like Bright App -->
+        <section>
+            <h2 class="text-xl font-bold text-gray-900 mb-4">Quick Actions</h2>
+            <div class="grid grid-cols-2 lg:grid-cols-3 gap-3">
+                
+                <!-- Referral Tracker -->
+                <div class="small-tile bg-green-50 rounded-2xl p-4 border border-green-200">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197" />
+                            </svg>
+                        </div>
+                        <svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-base mb-1">Referral Tracker</h3>
+                    <p class="text-sm text-gray-600">Track your weekly progress and goals</p>
+                </div>
+
+                <!-- Commission Calculator -->
+                <div class="small-tile bg-yellow-50 rounded-2xl p-4 border border-yellow-200">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="w-8 h-8 bg-yellow-500 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+                            </svg>
+                        </div>
+                        <svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-base mb-1">Commission Calculator</h3>
+                    <p class="text-sm text-gray-600">Calculate potential earnings</p>
+                </div>
+
+                <!-- Performance Analytics -->
+                <div class="small-tile bg-blue-50 rounded-2xl p-4 border border-blue-200">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2z" />
+                            </svg>
+                        </div>
+                        <svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-base mb-1">Performance Analytics</h3>
+                    <p class="text-sm text-gray-600">View detailed performance reports</p>
+                </div>
+
+                <!-- Goal Setting -->
+                <div class="small-tile bg-purple-50 rounded-2xl p-4 border border-purple-200">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="w-8 h-8 bg-purple-500 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0" />
+                            </svg>
+                        </div>
+                        <svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-base mb-1">Goal Setting</h3>
+                    <p class="text-sm text-gray-600">Set and track your targets</p>
+                </div>
+
+                <!-- Team Directory -->
+                <div class="small-tile bg-orange-50 rounded-2xl p-4 border border-orange-200">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857" />
+                            </svg>
+                        </div>
+                        <svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-base mb-1">Team Directory</h3>
+                    <p class="text-sm text-gray-600">Connect with your team</p>
+                </div>
+
+                <!-- 24/7 Support -->
+                <div class="small-tile bg-teal-50 rounded-2xl p-4 border border-teal-200">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="w-8 h-8 bg-teal-500 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72" />
+                            </svg>
+                        </div>
+                        <svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-base mb-1">24*7 Support</h3>
+                    <p class="text-sm text-gray-600">Get help from our experts</p>
+                </div>
+            </div>
+        </section>
+
         <!-- Metrics Grid -->
-        <section aria-labelledby="metrics-heading">
-            <h2 id="metrics-heading" class="sr-only">Performance Metrics</h2>
+        <section>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                 
-                <!-- Total Direct Referrals -->
                 <div class="bg-white rounded-xl shadow-lg p-6 border border-slate-200 hover-lift">
                     <div class="flex items-center justify-between">
                         <div>
@@ -209,14 +232,13 @@
                             <p class="text-sm text-gray-500 mt-1">6 Elite + 6 Regular</p>
                         </div>
                         <div class="p-3 bg-blue-100 rounded-lg flex-shrink-0">
-                            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
+                            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197" />
                             </svg>
                         </div>
                     </div>
                 </div>
 
-                <!-- Elite Qualifying Referrals -->
                 <div class="bg-white rounded-xl shadow-lg p-6 border border-slate-200 hover-lift">
                     <div class="flex items-center justify-between">
                         <div>
@@ -225,14 +247,13 @@
                             <p class="text-sm text-gray-500 mt-1">From 5+ referral weeks</p>
                         </div>
                         <div class="p-3 bg-purple-100 rounded-lg flex-shrink-0">
-                            <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                            <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81" />
                             </svg>
                         </div>
                     </div>
                 </div>
 
-                <!-- Annual Bonus Referrals -->
                 <div class="bg-white rounded-xl shadow-lg p-6 border border-slate-200 hover-lift">
                     <div class="flex items-center justify-between">
                         <div>
@@ -241,14 +262,13 @@
                             <p class="text-sm text-gray-500 mt-1">From 6 elite referrals</p>
                         </div>
                         <div class="p-3 bg-green-100 rounded-lg flex-shrink-0">
-                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                             </svg>
                         </div>
                     </div>
                 </div>
 
-                <!-- Consecutive Weeks -->
                 <div class="bg-white rounded-xl shadow-lg p-6 border border-slate-200 hover-lift">
                     <div class="flex items-center justify-between">
                         <div>
@@ -257,7 +277,7 @@
                             <p class="text-sm text-gray-500 mt-1">Top performer streak</p>
                         </div>
                         <div class="p-3 bg-orange-100 rounded-lg flex-shrink-0">
-                            <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                             </svg>
                         </div>
@@ -266,13 +286,13 @@
             </div>
         </section>
 
-        <!-- Weekly Progress - 5 Week Goal -->
-        <section aria-labelledby="weekly-progress-heading" class="bg-white rounded-xl shadow-lg border border-slate-200">
+        <!-- Weekly Progress -->
+        <section class="bg-white rounded-xl shadow-lg border border-slate-200">
             <div class="p-6 border-b border-gray-200">
                 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                    <h2 id="weekly-progress-heading" class="text-xl font-bold text-gray-900 flex items-center">
-                        <svg class="w-6 h-6 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                    <h2 class="text-xl font-bold text-gray-900 flex items-center">
+                        <svg class="w-6 h-6 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4" />
                         </svg>
                         Weekly Progress - Elite Status Track (5+ Referrals = Elite)
                     </h2>
@@ -290,15 +310,7 @@
                         <span class="text-sm font-medium text-gray-700">1 / 5 elite weeks achieved</span>
                     </div>
                     <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-                        <div 
-                            class="bg-gradient-to-r from-purple-500 to-pink-500 h-3 rounded-full progress-bar" 
-                            style="width: 20%"
-                            role="progressbar"
-                            aria-valuenow="20"
-                            aria-valuemin="0"
-                            aria-valuemax="100"
-                            aria-label="Elite weeks progress: 1 of 5 elite weeks achieved"
-                        ></div>
+                        <div class="bg-gradient-to-r from-purple-500 to-pink-500 h-3 rounded-full progress-bar" style="width: 20%"></div>
                     </div>
                     <div class="mt-2 text-xs text-gray-600">
                         Only weeks with 5+ referrals qualify for the 4.6x annual bonus multiplier
@@ -306,8 +318,7 @@
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-                    <!-- Week 1 - Completed -->
-                    <div class="week-card completed p-4 rounded-lg border-2" role="article" aria-label="Week 1: Completed with 4 referrals">
+                    <div class="week-card completed p-4 rounded-lg border-2">
                         <div class="text-center">
                             <div class="text-lg font-bold text-green-600">Week 1</div>
                             <div class="mt-2">
@@ -315,17 +326,14 @@
                                 <div class="text-xs text-gray-500">/ 3 goal</div>
                             </div>
                             <div class="mt-2">
-                                <div class="flex items-center justify-center">
-                                    <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                                    </svg>
-                                </div>
+                                <svg class="w-5 h-5 text-green-600 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4" />
+                                </svg>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Week 2 - Completed -->
-                    <div class="week-card completed p-4 rounded-lg border-2" role="article" aria-label="Week 2: Completed with 6 referrals">
+                    <div class="week-card completed p-4 rounded-lg border-2">
                         <div class="text-center">
                             <div class="text-lg font-bold text-green-600">Week 2</div>
                             <div class="mt-2">
@@ -333,17 +341,14 @@
                                 <div class="text-xs text-gray-500">/ 3 goal</div>
                             </div>
                             <div class="mt-2">
-                                <div class="flex items-center justify-center">
-                                    <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                                    </svg>
-                                </div>
+                                <svg class="w-5 h-5 text-green-600 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4" />
+                                </svg>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Week 3 - Current -->
-                    <div class="week-card current p-4 rounded-lg border-2" role="article" aria-label="Week 3: Current week with 2 referrals">
+                    <div class="week-card current p-4 rounded-lg border-2">
                         <div class="text-center">
                             <div class="text-lg font-bold text-blue-600">Week 3</div>
                             <div class="mt-2">
@@ -357,8 +362,7 @@
                         </div>
                     </div>
 
-                    <!-- Week 4 - Upcoming -->
-                    <div class="week-card upcoming p-4 rounded-lg border-2" role="article" aria-label="Week 4: Upcoming">
+                    <div class="week-card upcoming p-4 rounded-lg border-2">
                         <div class="text-center">
                             <div class="text-lg font-bold text-gray-400">Week 4</div>
                             <div class="mt-2">
@@ -371,8 +375,7 @@
                         </div>
                     </div>
 
-                    <!-- Week 5 - Upcoming -->
-                    <div class="week-card upcoming p-4 rounded-lg border-2" role="article" aria-label="Week 5: Upcoming">
+                    <div class="week-card upcoming p-4 rounded-lg border-2">
                         <div class="text-center">
                             <div class="text-lg font-bold text-gray-400">Week 5</div>
                             <div class="mt-2">
@@ -404,59 +407,9 @@
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
             
             <!-- Calendar & Events -->
-            <section aria-labelledby="calendar-heading" class="lg:col-span-2 bg-white rounded-xl shadow-lg border border-slate-200">
+            <section class="lg:col-span-2 bg-white rounded-xl shadow-lg border border-slate-200">
                 <div class="p-6 border-b border-gray-200">
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                        <h2 id="calendar-heading" class="text-xl font-bold text-gray-900 flex items-center">
-                            <svg class="w-6 h-6 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                            </svg>
-                            Calendar & Events
-                        </h2>
-                        <button 
-                            onclick="showAddEvent()" 
-                            class="btn-primary flex items-center px-4 py-2 text-white rounded-lg focus-ring"
-                            aria-label="Add new event"
-                        >
-                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                            </svg>
-                            Add Event
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="p-6">
-                    <div id="addEventForm" class="mb-6 p-4 bg-gray-50 rounded-lg hidden slide-down">
-                        <label for="newEventInput" class="block text-sm font-medium text-gray-700 mb-2">Event Description</label>
-                        <input 
-                            type="text" 
-                            id="newEventInput" 
-                            placeholder="Enter event description..." 
-                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent focus-ring"
-                            maxlength="100"
-                        >
-                        <div class="flex gap-2 mt-3">
-                            <button 
-                                onclick="addEvent()" 
-                                class="btn-primary px-4 py-2 text-white rounded-lg focus-ring"
-                            >
-                                Add
-                            </button>
-                            <button 
-                                onclick="hideAddEvent()" 
-                                class="btn-secondary px-4 py-2 bg-gray-300 text-gray-700 rounded-lg focus-ring"
-                            >
-                                Cancel
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="space-y-3" role="list" aria-label="Upcoming events">
-                        <!-- Event Items -->
-                        <div class="event-card flex items-center justify-between p-4 border border-gray-200 rounded-lg" role="listitem">
-                            <div class="flex items-center space-x-4">
-                                <div class="text-center flex-shrink-0">
-                                    <div class="text-sm font-medium text-gray-900">Jul</div>
-                                    <div class="text-lg font-bold text-gray-900">17</div>
-                                </div>
+                        <h2 class="text-xl font-bold text-gray-900 flex items-center">
+                            <svg class="w-6 h-6 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-
