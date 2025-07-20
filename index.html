@@ -25,7 +25,7 @@
         
         .hover-lift:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.1);
         }
         
         .week-card {
@@ -135,19 +135,13 @@
             transform: translateY(-1px);
         }
 
-        /* Sphere Tool Specific Styles - Compact Mobile Design */
-        .sphere-stats-card {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            border: 1px solid #0ea5e9;
-        }
-
         /* Mobile-first compact design */
         .compact-metric {
             padding: 0.75rem;
         }
         
         .compact-metric .metric-value {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             line-height: 1.2;
         }
         
@@ -168,6 +162,10 @@
             padding: 0.75rem;
         }
         
+        .compact-award {
+            padding: 0.75rem;
+        }
+        
         /* Tighter spacing for mobile */
         .tight-grid {
             gap: 0.75rem;
@@ -183,6 +181,13 @@
             .tight-grid {
                 gap: 1.25rem;
             }
+        }
+
+        /* Sphere Tool Specific Styles */
+        .sphere-stats-card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 1px solid #0ea5e9;
+            padding: 0.75rem;
         }
     </style>
 </head>
@@ -230,7 +235,7 @@
                 <div class="bg-white rounded-lg shadow-lg compact-metric border border-slate-200 hover-lift">
                     <div class="flex flex-col items-center text-center">
                         <div class="p-2 bg-blue-100 rounded-lg mb-2">
-                            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
                             </svg>
                         </div>
@@ -244,7 +249,7 @@
                 <div class="bg-white rounded-lg shadow-lg compact-metric border border-slate-200 hover-lift">
                     <div class="flex flex-col items-center text-center">
                         <div class="p-2 bg-purple-100 rounded-lg mb-2">
-                            <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
                             </svg>
                         </div>
@@ -258,7 +263,7 @@
                 <div class="bg-white rounded-lg shadow-lg compact-metric border border-slate-200 hover-lift">
                     <div class="flex flex-col items-center text-center">
                         <div class="p-2 bg-green-100 rounded-lg mb-2">
-                            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                             </svg>
                         </div>
@@ -272,7 +277,7 @@
                 <div class="bg-white rounded-lg shadow-lg compact-metric border border-slate-200 hover-lift">
                     <div class="flex flex-col items-center text-center">
                         <div class="p-2 bg-orange-100 rounded-lg mb-2">
-                            <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <svg class="w-4 h-4 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                             </svg>
                         </div>
@@ -290,7 +295,7 @@
                 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                     <h2 id="weekly-progress-heading" class="text-lg font-bold text-gray-900 flex items-center">
                         <svg class="w-5 h-5 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4" />
                         </svg>
                         Weekly Progress - Elite Track
                     </h2>
@@ -418,6 +423,31 @@
                 </div>
                 
                 <div class="p-4">
+                    <div id="addEventForm" class="mb-4 p-4 bg-gray-50 rounded-lg hidden slide-down">
+                        <label for="newEventInput" class="block text-sm font-medium text-gray-700 mb-2">Event Description</label>
+                        <input 
+                            type="text" 
+                            id="newEventInput" 
+                            placeholder="Enter event description..." 
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent focus-ring"
+                            maxlength="100"
+                        >
+                        <div class="flex gap-2 mt-3">
+                            <button 
+                                onclick="addEvent()" 
+                                class="btn-primary px-4 py-2 text-white rounded-lg focus-ring"
+                            >
+                                Add
+                            </button>
+                            <button 
+                                onclick="hideAddEvent()" 
+                                class="btn-secondary px-4 py-2 bg-gray-300 text-gray-700 rounded-lg focus-ring"
+                            >
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+
                     <div class="space-y-2" role="list" aria-label="Upcoming events">
                         <!-- Event Items - Compact -->
                         <div class="event-card flex items-center justify-between compact-event border border-gray-200 rounded-lg" role="listitem">
@@ -467,6 +497,22 @@
                                 roadmap
                             </span>
                         </div>
+
+                        <div class="event-card flex items-center justify-between compact-event border border-gray-200 rounded-lg" role="listitem">
+                            <div class="flex items-center space-x-3">
+                                <div class="text-center flex-shrink-0">
+                                    <div class="text-xs font-medium text-gray-900">Jul</div>
+                                    <div class="text-sm font-bold text-gray-900">15</div>
+                                </div>
+                                <div>
+                                    <h3 class="text-sm font-medium text-gray-900">Client Meeting - Thompson Family</h3>
+                                    <p class="text-xs text-gray-500">3:30 PM</p>
+                                </div>
+                            </div>
+                            <span class="px-2 py-1 text-xs font-medium rounded-full border bg-gray-100 text-gray-800 border-gray-200 flex-shrink-0">
+                                custom
+                            </span>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -483,7 +529,7 @@
                 </div>
                 
                 <div class="p-4 space-y-3">
-                    <div class="award-card p-3 rounded-lg border-2 bg-blue-50 border-blue-200" role="article">
+                    <div class="award-card compact-award rounded-lg border-2 bg-blue-50 border-blue-200" role="article">
                         <div class="flex items-start justify-between">
                             <div class="flex-1">
                                 <h3 class="text-sm font-semibold text-blue-800">Weekly Top Performer</h3>
@@ -496,323 +542,380 @@
                         </div>
                     </div>
 
-                    <div class="award-card p-3 rounded-lg border-2 bg-yellow-50 border-yellow-200" role="article">
+                    <div class="award-card compact-award rounded-lg border-2 bg-yellow-50 border-yellow-200" role="article">
                         <div class="flex items-start justify-between">
                             <div class="flex-1">
                                 <h3 class="text-sm font-semibold text-yellow-800">8-Week Streak</h3>
-                                <p class="text-
-<body class="gradient-bg min-h-screen">
-    <div class="max-w-7xl mx-auto p-3 sm:p-4 space-y-4">
+                                <p class="text-xs text-gray-600 mt-1">8 consecutive weeks</p>
+                                <p class="text-xs text-gray-500 mt-1">Active</p>
+                            </div>
+                            <svg class="w-4 h-4 text-yellow-600 ml-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="award-card compact-award rounded-lg border-2 bg-blue-50 border-blue-200" role="article">
+                        <div class="flex items-start justify-between">
+                            <div class="flex-1">
+                                <h3 class="text-sm font-semibold text-blue-800">Excellence Trip</h3>
+                                <p class="text-xs text-gray-600 mt-1">Top 3 agents earn trip</p>
+                                <p class="text-xs text-gray-500 mt-1">45 days left</p>
+                            </div>
+                            <svg class="w-4 h-4 text-blue-600 ml-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 p-3 bg-gradient-to-r from-purple-100 to-pink-100 rounded-lg border border-purple-200">
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                            <div>
+                                <h3 class="text-sm font-semibold text-purple-800">Referral Run Timer</h3>
+                                <p class="text-xs text-purple-600">Time remaining</p>
+                            </div>
+                            <div class="text-left sm:text-right">
+                                <p class="text-sm font-bold text-purple-800">4 days 12 hours</p>
+                                <p class="text-xs text-purple-600">Keep pushing!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Tools & Resources -->
+        <section aria-labelledby="tools-heading" class="bg-white rounded-xl shadow-lg border border-slate-200">
+            <div class="p-4 border-b border-gray-200">
+                <h2 id="tools-heading" class="text-lg font-bold text-gray-900 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4" />
+                    </svg>
+                    Tools & Resources
+                </h2>
+            </div>
+            
+            <div class="p-4">
+                <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 tight-grid">
+                    <a 
+                        href="#" 
+                        class="tool-card flex items-center compact-tool border border-gray-200 rounded-lg focus-ring"
+                        aria-label="Access Working Your Sphere eBook"
+                    >
+                        <div class="tool-icon p-2 rounded-lg bg-blue-500 flex-shrink-0">
+                            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                            </svg>
+                        </div>
+                        <div class="ml-3 flex-1 min-w-0">
+                            <h3 class="tool-text text-sm font-medium text-gray-900 truncate">Sphere eBook</h3>
+                        </div>
+                    </a>
+
+                    <a 
+                        href="#" 
+                        class="tool-card flex items-center compact-tool border border-gray-200 rounded-lg focus-ring"
+                        aria-label="Access Outreach Templates"
+                    >
+                        <div class="tool-icon p-2 rounded-lg bg-green-500 flex-shrink-0">
+                            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                            </svg>
+                        </div>
+                        <div class="ml-3 flex-1 min-w-0">
+                            <h3 class="tool-text text-sm font-medium text-gray-900 truncate">Templates</h3>
+                        </div>
+                    </a>
+
+                    <a 
+                        href="#" 
+                        class="tool-card flex items-center compact-tool border border-gray-200 rounded-lg focus-ring"
+                        aria-label="Access Analytics Tools"
+                    >
+                        <div class="tool-icon p-2 rounded-lg bg-purple-500 flex-shrink-0">
+                            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                            </svg>
+                        </div>
+                        <div class="ml-3 flex-1 min-w-0">
+                            <h3 class="tool-text text-sm font-medium text-gray-900 truncate">Analytics</h3>
+                        </div>
+                    </a>
+
+                    <a 
+                        href="#" 
+                        class="tool-card flex items-center compact-tool border border-gray-200 rounded-lg focus-ring"
+                        aria-label="Access Lead Tracker"
+                    >
+                        <div class="tool-icon p-2 rounded-lg bg-orange-500 flex-shrink-0">
+                            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4" />
+                            </svg>
+                        </div>
+                        <div class="ml-3 flex-1 min-w-0">
+                            <h3 class="tool-text text-sm font-medium text-gray-900 truncate">Lead Tracker</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 🌐 Sphere of Influence Builder -->
+        <section aria-labelledby="sphere-tool-heading" class="bg-white rounded-xl shadow-lg border border-slate-200">
+            <div class="p-4 border-b border-gray-200">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                    <h2 id="sphere-tool-heading" class="text-lg font-bold text-gray-900 flex items-center">
+                        <span class="text-xl mr-3">🌐</span>
+                        Sphere of Influence Builder
+                    </h2>
+                    <div class="flex gap-2">
+                        <button 
+                            onclick="openSphereApp()" 
+                            class="btn-primary flex items-center px-4 py-2 text-white rounded-lg focus-ring text-sm"
+                            aria-label="Open full sphere tool"
+                        >
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                            Open Sphere Tool
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-4">
+                <!-- Sphere Statistics Dashboard -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 tight-grid mb-4">
+                    <div class="sphere-stats-card rounded-lg">
+                        <div class="text-center">
+                            <p class="text-xs font-medium text-blue-800">Total Contacts</p>
+                            <p class="text-xl font-bold text-blue-900 mt-1" id="totalContacts">47</p>
+                            <p class="text-xs text-gray-600">Active sphere</p>
+                        </div>
+                    </div>
+                    
+                    <div class="sphere-stats-card rounded-lg">
+                        <div class="text-center">
+                            <p class="text-xs font-medium text-yellow-800">Gold Tier</p>
+                            <p class="text-xl font-bold text-yellow-600 mt-1" id="goldTier">12</p>
+                            <p class="text-xs text-gray-600">VIP contacts</p>
+                        </div>
+                    </div>
+                    
+                    <div class="sphere-stats-card rounded-lg">
+                        <div class="text-center">
+                            <p class="text-xs font-medium text-gray-800">Titanium Tier</p>
+                            <p class="text-xl font-bold text-gray-600 mt-1" id="titaniumTier">8</p>
+                            <p class="text-xs text-gray-600">Elite contacts</p>
+                        </div>
+                    </div>
+                    
+                    <div class="sphere-stats-card rounded-lg">
+                        <div class="text-center">
+                            <p class="text-xs font-medium text-green-800">Connectors</p>
+                            <p class="text-xl font-bold text-green-600 mt-1" id="connectors">15</p>
+                            <p class="text-xs text-gray-600">Network builders</p>
+                        </div>
+                    </div>
+                    
+                    <div class="sphere-stats-card rounded-lg">
+                        <div class="text-center">
+                            <p class="text-xs font-medium text-purple-800">Mavens</p>
+                            <p class="text-xl font-bold text-purple-600 mt-1" id="mavens">12</p>
+                            <p class="text-xs text-gray-600">Influencers</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sphere Tool Summary Section -->
+                <div class="p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg border border-purple-200 mb-4">
+                    <h3 class="text-sm font-semibold text-purple-900 mb-3 flex items-center">
+                        <span class="mr-2">📋</span>
+                        Sphere Management Overview
+                    </h3>
+                    
+                    <div class="text-center py-4">
+                        <div class="mb-4">
+                            <div class="text-3xl mb-2">🌐</div>
+                            <h4 class="text-lg font-semibold text-purple-800 mb-2">Your Sphere of Influence</h4>
+                            <p class="text-gray-600 mb-4 text-sm">
+                                Manage your complete network of contacts, track relationships, and organize your referral pipeline.
+                            </p>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-3 mb-4">
+                            <div class="bg-white p-3 rounded-lg border">
+                                <div class="text-lg font-bold text-blue-600">47</div>
+                                <div class="text-xs text-gray-600">Active Contacts</div>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border">
+                                <div class="text-lg font-bold text-green-600">12</div>
+                                <div class="text-xs text-gray-600">Hot Prospects</div>
+                            </div>
+                        </div>
+
+                        <button 
+                            onclick="openSphereApp()" 
+                            class="btn-primary px-6 py-2 text-white rounded-lg focus-ring text-sm font-semibold"
+                        >
+                            🚀 Launch Sphere Tool
+                        </button>
+                        <p class="text-xs text-gray-600 mt-2">
+                            Opens your complete sphere management tool in a new tab
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="flex flex-wrap gap-2 justify-center">
+                    <button 
+                        onclick="openSphereApp()" 
+                        class="btn-primary flex items-center px-4 py-2 text-white rounded-lg focus-ring text-sm"
+                    >
+                        <span class="mr-2">🚀</span>
+                        Launch Full Sphere Tool
+                    </button>
+                    
+                    <button 
+                        onclick="exportContacts()" 
+                        class="btn-secondary flex items-center px-3 py-2 bg-gray-200 text-gray-700 rounded-lg focus-ring text-sm"
+                    >
+                        <span class="mr-2">📊</span>
+                        Export Data
+                    </button>
+                    
+                    <button 
+                        onclick="viewAnalytics()" 
+                        class="btn-secondary flex items-center px-3 py-2 bg-gray-200 text-gray-700 rounded-lg focus-ring text-sm"
+                    >
+                        <span class="mr-2">📈</span>
+                        View Analytics
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        'use strict';
         
-        <!-- Header Section - Compact -->
-        <header class="bg-white rounded-xl shadow-lg p-4 border border-slate-200" role="banner">
-            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
-                <div>
-                    <h1 class="text-xl sm:text-2xl font-bold text-gray-900">Welcome back, Steven Holcombe!</h1>
-                    <p class="text-gray-600 text-sm">Here's your performance overview</p>
-                </div>
-                <div class="flex flex-col items-start lg:items-end">
-                    <div class="tier-elite inline-flex items-center px-3 py-1.5 rounded-full text-white font-semibold text-sm">
-                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.146a4.001 4.001 0 000 7.708V16a1 1 0 102 0v-3.146a4.001 4.001 0 000-7.708V4zM15.5 6a1 1 0 01.5.886v2.228a2 2 0 010 3.772v2.228a1 1 0 11-2 0v-2.228a2 2 0 010-3.772V6.886A1 1 0 0115.5 6z" clip-rule="evenodd" />
-                        </svg>
-                        Elite Pro
-                    </div>
-                    <div class="mt-1 text-xs text-gray-600">
-                        Progress to Diamond Elite: 75%
-                    </div>
-                    <div class="w-24 bg-gray-200 rounded-full h-1.5 mt-1 overflow-hidden">
-                        <div 
-                            class="bg-gradient-to-r from-blue-500 to-purple-500 h-1.5 rounded-full progress-bar" 
-                            style="width: 75%"
-                            role="progressbar"
-                            aria-valuenow="75"
-                            aria-valuemin="0"
-                            aria-valuemax="100"
-                            aria-label="Progress to Diamond Elite"
-                        ></div>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <!-- Metrics Grid - Compact Mobile Design -->
-        <section aria-labelledby="metrics-heading">
-            <h2 id="metrics-heading" class="sr-only">Performance Metrics</h2>
-            <div class="grid grid-cols-2 lg:grid-cols-4 tight-grid">
-                
-                <!-- Total Direct Referrals -->
-                <div class="bg-white rounded-lg shadow-lg compact-metric border border-slate-200 hover-lift">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="p-2 bg-blue-100 rounded-lg mb-2">
-                            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
-                            </svg>
-                        </div>
-                        <p class="metric-label font-medium text-gray-600">Total Referrals</p>
-                        <p class="metric-value font-bold text-gray-900 mt-1">12</p>
-                        <p class="text-xs text-gray-500">6 Elite + 6 Regular</p>
-                    </div>
-                </div>
-
-                <!-- Elite Qualifying Referrals -->
-                <div class="bg-white rounded-lg shadow-lg compact-metric border border-slate-200 hover-lift">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="p-2 bg-purple-100 rounded-lg mb-2">
-                            <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-                            </svg>
-                        </div>
-                        <p class="metric-label font-medium text-gray-600">Elite Qualifying</p>
-                        <p class="metric-value font-bold text-purple-600 mt-1">6</p>
-                        <p class="text-xs text-gray-500">5+ referral weeks</p>
-                    </div>
-                </div>
-
-                <!-- Annual Bonus Referrals -->
-                <div class="bg-white rounded-lg shadow-lg compact-metric border border-slate-200 hover-lift">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="p-2 bg-green-100 rounded-lg mb-2">
-                            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                            </svg>
-                        </div>
-                        <p class="metric-label font-medium text-gray-600">Annual Bonus</p>
-                        <p class="metric-value font-bold text-green-600 mt-1">27.6</p>
-                        <p class="text-xs text-gray-500">From 6 elite</p>
-                    </div>
-                </div>
-
-                <!-- Consecutive Weeks -->
-                <div class="bg-white rounded-lg shadow-lg compact-metric border border-slate-200 hover-lift">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="p-2 bg-orange-100 rounded-lg mb-2">
-                            <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                            </svg>
-                        </div>
-                        <p class="metric-label font-medium text-gray-600">Consecutive Weeks</p>
-                        <p class="metric-value font-bold text-orange-600 mt-1">8</p>
-                        <p class="text-xs text-gray-500">Top performer</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Weekly Progress - Compact -->
-        <section aria-labelledby="weekly-progress-heading" class="bg-white rounded-xl shadow-lg border border-slate-200">
-            <div class="p-4 border-b border-gray-200">
-                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                    <h2 id="weekly-progress-heading" class="text-lg font-bold text-gray-900 flex items-center">
-                        <svg class="w-5 h-5 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                        </svg>
-                        Weekly Progress - Elite Track
-                    </h2>
-                    <div class="text-left sm:text-right">
-                        <div class="text-xs text-gray-600">Current Week</div>
-                        <div class="text-lg font-bold text-blue-600">Week 3</div>
-                    </div>
-                </div>
-            </div>
+        /**
+         * Show the add event form with smooth animation
+         */
+        function showAddEvent() {
+            const form = document.getElementById('addEventForm');
+            const input = document.getElementById('newEventInput');
             
-            <div class="p-4">
-                <div class="mb-4">
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="text-xs font-medium text-gray-700">Elite Weeks Progress</span>
-                        <span class="text-xs font-medium text-gray-700">1 / 5 achieved</span>
-                    </div>
-                    <div class="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
-                        <div 
-                            class="bg-gradient-to-r from-purple-500 to-pink-500 h-2 rounded-full progress-bar" 
-                            style="width: 20%"
-                            role="progressbar"
-                            aria-valuenow="20"
-                            aria-valuemin="0"
-                            aria-valuemax="100"
-                            aria-label="Elite weeks progress: 1 of 5 elite weeks achieved"
-                        ></div>
-                    </div>
-                </div>
+            if (form && input) {
+                form.classList.remove('hidden');
+                form.classList.add('slide-down');
+                // Focus the input for better UX
+                setTimeout(() => input.focus(), 100);
+            }
+        }
 
-                <div class="grid grid-cols-5 tight-grid">
-                    <!-- Week 1 - Completed -->
-                    <div class="week-card completed compact-week-card rounded-lg border-2" role="article">
-                        <div class="text-center">
-                            <div class="text-sm font-bold text-green-600">W1</div>
-                            <div class="mt-1">
-                                <div class="text-lg font-bold text-green-600">4</div>
-                                <div class="text-xs text-gray-500">/3</div>
-                            </div>
-                            <div class="mt-1">
-                                <svg class="w-3 h-3 text-green-600 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4" />
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Week 2 - Completed -->
-                    <div class="week-card completed compact-week-card rounded-lg border-2" role="article">
-                        <div class="text-center">
-                            <div class="text-sm font-bold text-green-600">W2</div>
-                            <div class="mt-1">
-                                <div class="text-lg font-bold text-green-600">6</div>
-                                <div class="text-xs text-gray-500">/5</div>
-                            </div>
-                            <div class="mt-1">
-                                <svg class="w-3 h-3 text-green-600 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4" />
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Week 3 - Current -->
-                    <div class="week-card current compact-week-card rounded-lg border-2" role="article">
-                        <div class="text-center">
-                            <div class="text-sm font-bold text-blue-600">W3</div>
-                            <div class="mt-1">
-                                <div class="text-lg font-bold text-blue-600">2</div>
-                                <div class="text-xs text-gray-500">/5</div>
-                            </div>
-                            <div class="mt-1">
-                                <div class="text-xs font-medium text-blue-600">Now</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Week 4 - Upcoming -->
-                    <div class="week-card upcoming compact-week-card rounded-lg border-2" role="article">
-                        <div class="text-center">
-                            <div class="text-sm font-bold text-gray-400">W4</div>
-                            <div class="mt-1">
-                                <div class="text-lg font-bold text-gray-400">0</div>
-                                <div class="text-xs text-gray-500">/5</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Week 5 - Upcoming -->
-                    <div class="week-card upcoming compact-week-card rounded-lg border-2" role="article">
-                        <div class="text-center">
-                            <div class="text-sm font-bold text-gray-400">W5</div>
-                            <div class="mt-1">
-                                <div class="text-lg font-bold text-gray-400">0</div>
-                                <div class="text-xs text-gray-500">/5</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="grid grid-cols-1 lg:grid-cols-3 tight-grid">
+        /**
+         * Hide the add event form and clear input
+         */
+        function hideAddEvent() {
+            const form = document.getElementById('addEventForm');
+            const input = document.getElementById('newEventInput');
             
-            <!-- Calendar & Events - Compact -->
-            <section aria-labelledby="calendar-heading" class="lg:col-span-2 bg-white rounded-xl shadow-lg border border-slate-200">
-                <div class="p-4 border-b border-gray-200">
-                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                        <h2 id="calendar-heading" class="text-lg font-bold text-gray-900 flex items-center">
-                            <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                            </svg>
-                            Calendar & Events
-                        </h2>
-                        <button 
-                            onclick="showAddEvent()" 
-                            class="btn-primary flex items-center px-3 py-2 text-white rounded-lg focus-ring text-sm"
-                            aria-label="Add new event"
-                        >
-                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                            </svg>
-                            Add Event
-                        </button>
-                    </div>
-                </div>
+            if (form && input) {
+                form.classList.add('hidden');
+                form.classList.remove('slide-down');
+                input.value = '';
+            }
+        }
+
+        /**
+         * Add a new event (placeholder function for backend integration)
+         */
+        function addEvent() {
+            const input = document.getElementById('newEventInput');
+            
+            if (!input) return;
+            
+            const eventText = input.value.trim();
+            
+            if (eventText === '') {
+                input.focus();
+                return;
+            }
+            
+            // Validate input length
+            if (eventText.length > 100) {
+                alert('Event description must be 100 characters or less.');
+                return;
+            }
+            
+            // Here you would integrate with your backend API
+            console.log('Adding event:', eventText);
+            
+            // Hide form and clear input
+            hideAddEvent();
+        }
+
+        // SPHERE TOOL FUNCTIONS
+
+        /**
+         * Open the full sphere tool in a new tab
+         */
+        function openSphereApp() {
+            window.open('https://nowtool.netlify.app/', '_blank');
+        }
+
+        /**
+         * Export contacts data
+         */
+        function exportContacts() {
+            alert('Export feature coming soon! This will download your contacts as CSV.');
+        }
+
+        /**
+         * View detailed analytics
+         */
+        function viewAnalytics() {
+            alert('Analytics dashboard coming soon! This will show detailed sphere insights.');
+        }
+
+        /**
+         * Handle keyboard events for better UX
+         */
+        document.addEventListener('DOMContentLoaded', function() {
+            const input = document.getElementById('newEventInput');
+            
+            if (input) {
+                // Add event on Enter key press
+                input.addEventListener('keypress', function(event) {
+                    if (event.key === 'Enter') {
+                        event.preventDefault();
+                        addEvent();
+                    }
+                });
                 
-                <div class="p-4">
-                    <div class="space-y-2" role="list" aria-label="Upcoming events">
-                        <!-- Event Items - Compact -->
-                        <div class="event-card flex items-center justify-between compact-event border border-gray-200 rounded-lg" role="listitem">
-                            <div class="flex items-center space-x-3">
-                                <div class="text-center flex-shrink-0">
-                                    <div class="text-xs font-medium text-gray-900">Jul</div>
-                                    <div class="text-sm font-bold text-gray-900">17</div>
-                                </div>
-                                <div>
-                                    <h3 class="text-sm font-medium text-gray-900">Awards Recognition</h3>
-                                    <p class="text-xs text-gray-500">2:00 PM</p>
-                                </div>
-                            </div>
-                            <span class="px-2 py-1 text-xs font-medium rounded-full border bg-yellow-100 text-yellow-800 border-yellow-200 flex-shrink-0">
-                                awards
-                            </span>
-                        </div>
+                // Hide form on Escape key press
+                input.addEventListener('keydown', function(event) {
+                    if (event.key === 'Escape') {
+                        event.preventDefault();
+                        hideAddEvent();
+                    }
+                });
+            }
+        });
 
-                        <div class="event-card flex items-center justify-between compact-event border border-gray-200 rounded-lg" role="listitem">
-                            <div class="flex items-center space-x-3">
-                                <div class="text-center flex-shrink-0">
-                                    <div class="text-xs font-medium text-gray-900">Jul</div>
-                                    <div class="text-sm font-bold text-gray-900">21</div>
-                                </div>
-                                <div>
-                                    <h3 class="text-sm font-medium text-gray-900">Best Practices</h3>
-                                    <p class="text-xs text-gray-500">10:00 AM</p>
-                                </div>
-                            </div>
-                            <span class="px-2 py-1 text-xs font-medium rounded-full border bg-blue-100 text-blue-800 border-blue-200 flex-shrink-0">
-                                training
-                            </span>
-                        </div>
-
-                        <div class="event-card flex items-center justify-between compact-event border border-gray-200 rounded-lg" role="listitem">
-                            <div class="flex items-center space-x-3">
-                                <div class="text-center flex-shrink-0">
-                                    <div class="text-xs font-medium text-gray-900">Aug</div>
-                                    <div class="text-sm font-bold text-gray-900">1</div>
-                                </div>
-                                <div>
-                                    <h3 class="text-sm font-medium text-gray-900">Roadmap Input</h3>
-                                    <p class="text-xs text-gray-500">9:00 AM</p>
-                                </div>
-                            </div>
-                            <span class="px-2 py-1 text-xs font-medium rounded-full border bg-green-100 text-green-800 border-green-200 flex-shrink-0">
-                                roadmap
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Awards & Recognition - Compact -->
-            <section aria-labelledby="awards-heading" class="bg-white rounded-xl shadow-lg border border-slate-200">
-                <div class="p-4 border-b border-gray-200">
-                    <h2 id="awards-heading" class="text-lg font-bold text-gray-900 flex items-center">
-                        <svg class="w-5 h-5 mr-2 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4" />
-                        </svg>
-                        Awards & Recognition
-                    </h2>
-                </div>
-                
-                <div class="p-4 space-y-3">
-                    <div class="award-card p-3 rounded-lg border-2 bg-blue-50 border-blue-200" role="article">
-                        <div class="flex items-start justify-between">
-                            <div class="flex-1">
-                                <h3 class="text-sm font-semibold text-blue-800">Weekly Top Performer</h3>
-                                <p class="text-xs text-gray-600 mt-1">Top referrals this week</p>
-                                <p class="text-xs text-gray-500 mt-1">3 days left</p>
-                            </div>
-                            <svg class="w-4 h-4 text-blue-600 ml-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                        </div>
-                    </div>
-
-                    <div class="award-card p-3 rounded-lg border-2 bg-yellow-50 border-yellow-200" role="article">
-                        <div class="flex items-start justify-between">
-                            <div class="flex-1">
-                                <h3 class="text-sm font-semibold text-yellow-800">8-Week Streak</h3>
-                                <p class="text-
+        /**
+         * Optional: Add keyboard navigation for accessibility
+         */
+        document.addEventListener('keydown', function(event) {
+            // Close add event form on Escape key (global)
+            if (event.key === 'Escape') {
+                const form = document.getElementById('addEventForm');
+                if (form && !form.classList.contains('hidden')) {
+                    hideAddEvent();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
